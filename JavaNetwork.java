@@ -44,4 +44,14 @@ public class JavaNetwork {
       }
     }
   }
+
+  public void viewTimeline(String name) {
+    for (int i = 0; i < users.size(); i++) {
+      if (users.get(i).name == name) {
+        for (int j = 0; j < users.get(i).usersSubscibedTo.size(); j++) {
+          getMessages(users.get(i).usersSubscibedTo.get(j));
+        }
+      }
+    }
+  }
 }

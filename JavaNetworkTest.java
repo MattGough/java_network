@@ -8,7 +8,6 @@ public class JavaNetworkTest {
 
   @Before public void initailize() {
     network.createUser("Spike");
-    network.postMessage("Spike", "Hello world");
   }
 
   @Test
@@ -23,6 +22,7 @@ public class JavaNetworkTest {
 
   @Test
   public void shouldPostMessageForUser() {
+    network.postMessage("Spike", "Hello world");
     network.getMessages("Spike");
     Assert.assertEquals("Hello world\n", systemOutRule.getLog());
   }
@@ -31,6 +31,7 @@ public class JavaNetworkTest {
   public void selectUsersPosts() {
     network.createUser("Nikesh");
     network.postMessage("Nikesh", "Goodbye cruel world");
+    network.postMessage("Spike", "Hello world");
     network.getMessages("Nikesh");
     Assert.assertEquals("Goodbye cruel world\n", systemOutRule.getLog());
   }
@@ -43,5 +44,17 @@ public class JavaNetworkTest {
     network.subscribeUser("Leo", "Nikesh");
     network.getSubscribedUsers("Leo");
     Assert.assertEquals("Spike\nNikesh\n", systemOutRule.getLog());
+  }
+
+  @Test
+  public void viewTimelineOfSubscribedUserPosts() {
+    network.createUser("Nikesh");
+    network.createUser("Leo");
+    network.subscribeUser("Leo", "Spike");
+    network.subscribeUser("Leo", "Nikesh");
+    network.postMessage("Nikesh", "Goodbye cruel world");
+    network.postMessage("Spike", "What a wonderful world");
+    network.viewTimeline("Leo");
+    Assert.assertEquals("What a wonderful world\nGoodbye cruel world\n", systemOutRule.getLog());
   }
 }
