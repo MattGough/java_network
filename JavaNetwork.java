@@ -28,4 +28,20 @@ public class JavaNetwork {
       }
     }
   }
+
+  public void subscribeUser(String name1, String name2) {
+    for (int i = 0; i < users.size(); i++) {
+      if (users.get(i).name == name1) {
+        users.get(i).subscribe(name2);
+      }
+    }
+  }
+
+  public void getSubscribedUsers(String name) {
+    for (int i = 0; i < users.size(); i++) {
+      if (users.get(i).name == name) {
+        users.get(i).showUsersSubscibedTo();
+      }
+    }
+  }
 }

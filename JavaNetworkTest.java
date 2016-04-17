@@ -34,4 +34,14 @@ public class JavaNetworkTest {
     network.getMessages("Nikesh");
     Assert.assertEquals("Goodbye cruel world\n", systemOutRule.getLog());
   }
+
+  @Test
+  public void subscribeUsertoAnotherUser() {
+    network.createUser("Nikesh");
+    network.createUser("Leo");
+    network.subscribeUser("Leo", "Spike");
+    network.subscribeUser("Leo", "Nikesh");
+    network.getSubscribedUsers("Leo");
+    Assert.assertEquals("Spike\nNikesh\n", systemOutRule.getLog());
+  }
 }
