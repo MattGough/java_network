@@ -6,10 +6,6 @@ public class JavaNetworkTest {
 
   JavaNetwork network = new JavaNetwork();
 
-  // @Before public void initailize() {
-  //   network.createUser("Spike");
-  // }
-
   @Test
   public void shoulAddANewUserToUsers() {
     Assert.assertEquals(0, network.users.size());
