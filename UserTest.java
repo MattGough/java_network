@@ -41,4 +41,18 @@ public class UserTest {
     spike.showMyTimeline();
     Assert.assertEquals(returnMessage, systemOutRule.getLog());
   }
+
+  @Test
+  public void addSubscribedUsertoList() {
+    spike.subscribe("Nikesh");
+    Assert.assertEquals(1, spike.usersSubscibedTo.size());
+  }
+
+  @Test
+  public void viewSubsribedList() {
+    spike.subscribe("Nikesh");
+    spike.subscribe("Leo");
+    spike.showUsersSubscibedTo();
+    Assert.assertEquals("Nikesh\nLeo\n", systemOutRule.getLog());
+  }
 }

@@ -7,8 +7,8 @@ public class JavaNetworkTest {
   JavaNetwork network = new JavaNetwork();
 
   @Before public void initailize() {
-    network.createUser("spike");
-    network.postMessage("spike", "hello world");
+    network.createUser("Spike");
+    network.postMessage("Spike", "Hello world");
   }
 
   @Test
@@ -23,15 +23,15 @@ public class JavaNetworkTest {
 
   @Test
   public void shouldPostMessageForUser() {
-    network.getMessages("spike");
-    Assert.assertEquals("hello world\n", systemOutRule.getLog());
+    network.getMessages("Spike");
+    Assert.assertEquals("Hello world\n", systemOutRule.getLog());
   }
 
   @Test
   public void selectUsersPosts() {
-    network.createUser("nikesh");
-    network.postMessage("nikesh", "goodbye cruel world");
-    network.getMessages("nikesh");
-    Assert.assertEquals("goodbye cruel world\n", systemOutRule.getLog());
+    network.createUser("Nikesh");
+    network.postMessage("Nikesh", "Goodbye cruel world");
+    network.getMessages("Nikesh");
+    Assert.assertEquals("Goodbye cruel world\n", systemOutRule.getLog());
   }
 }
