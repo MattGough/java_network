@@ -1,6 +1,6 @@
 ## Java Network
 
-This is Makers Academy challenge to build a basic command line social network in Java. As described [here](https://gist.github.com/spike01/39e1ae40e0669fc68a67ec30efdb1ce7).
+This is a Makers Academy challenge to build a basic command line social network in Java, as described [here](https://gist.github.com/spike01/39e1ae40e0669fc68a67ec30efdb1ce7).
 
 ### Features
 
@@ -44,20 +44,20 @@ Because I started working on the train, I couldn't download intelliJ, so I start
 
 To use in a Java REPL, add the User and JavaNetwork classes, then:
 ```java
-> JavaNetwork network = new JavaNetwork(); // create a new network
-> network.createUser("Spike");             // create a new user
+> JavaNetwork network = new JavaNetwork();          // create a new network
+> network.createUser("Spike");                      // create a new user
 > network.postMessage("Spike", "Hello world!");     // post a message
 > network.postMessage("Hello universe!");
-> network.getMessages("Spike");            // get a user's timeline
+> network.getMessages("Spike");                     // get a user's timeline
 "Hello world! posted by Spike"
 "Hello universe! posted by Spike"
 // once other users have been created and have posted messages
-> network.subscribeUser("Leo", "Spike");   // subscribe the first user to the second
+> network.subscribeUser("Leo", "Spike");           // subscribe the first user to the second
 > network.subscribeUser("Leo", "Nikesh");
 > network.getSubscribedUsers("Leo");
 "Spike"
 "Nikesh"
-> network.viewTimeline("Leo");             // view the combined messages of the users subscribed to
+> network.viewTimeline("Leo");                    // view the combined messages of the users subscribed to
 "Hello world! posted by Spike"
 "Hello universe! posted by Spike"
 "Goodbye world! posted by Nikesh"
