@@ -7,6 +7,6 @@ public class TestRunner {
     Result result = JUnitCore.runClasses(UserTest.class); for (Failure failure : result.getFailures()) {
       System.out.println(failure.toString());
     }
-      System.out.println(result.wasSuccessful());
+    System.out.println(result.wasSuccessful());
   }
 }
