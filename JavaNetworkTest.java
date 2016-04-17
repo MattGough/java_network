@@ -26,4 +26,12 @@ public class JavaNetworkTest {
     network.getMessages("spike");
     Assert.assertEquals("hello world\n", systemOutRule.getLog());
   }
+
+  @Test
+  public void selectUsersPosts() {
+    network.createUser("nikesh");
+    network.postMessage("nikesh", "goodbye cruel world");
+    network.getMessages("nikesh");
+    Assert.assertEquals("goodbye cruel world\n", systemOutRule.getLog());
+  }
 }
