@@ -22,4 +22,11 @@ public class UserTest {
     spike.post(message1);
     Assert.assertEquals(1, spike.posts.size());
   }
+
+  @Test
+  public void viewPostedMessage() {
+    spike.post(message1);
+    spike.showMyTimeline();
+    Assert.assertEquals("Hello world!\n", systemOutRule.getLog());
+  }
 }
