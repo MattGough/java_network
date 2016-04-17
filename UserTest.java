@@ -5,9 +5,13 @@ import org.junit.contrib.java.lang.system.internal.*;
 public class UserTest {
 
   String name1 = "Spike",
-         message1 = "Hello world!";
+         name2 = "Nikesh",
+         message1 = "Hello world!",
+         message2 = "Goodbye cruel world!",
+         returnMessage = "Hello world!\nGoodbye cruel world!\n";
 
-  User spike = new User(name1);
+  User spike = new User(name1),
+       nikesh = new User(name2);
 
   @Test
   public void testGetName() {
@@ -28,5 +32,13 @@ public class UserTest {
     spike.post(message1);
     spike.showMyTimeline();
     Assert.assertEquals("Hello world!\n", systemOutRule.getLog());
+  }
+
+  @Test
+  public void viewMultiplePosts() {
+    spike.post(message1);
+    spike.post(message2);
+    spike.showMyTimeline();
+    Assert.assertEquals(returnMessage, systemOutRule.getLog());
   }
 }
