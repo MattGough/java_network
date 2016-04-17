@@ -6,15 +6,15 @@ public class JavaNetworkTest {
 
   JavaNetwork network = new JavaNetwork();
 
-  @Before public void initailize() {
-    network.createUser("Spike");
-  }
+  // @Before public void initailize() {
+  //   network.createUser("Spike");
+  // }
 
   @Test
   public void shoulAddANewUserToUsers() {
-    Assert.assertEquals(1, network.users.size());
+    Assert.assertEquals(0, network.users.size());
     network.createUser("Tim");
-    Assert.assertEquals(2, network.users.size());
+    Assert.assertEquals(1, network.users.size());
   }
 
   @Rule
@@ -22,22 +22,25 @@ public class JavaNetworkTest {
 
   @Test
   public void shouldPostMessageForUser() {
+    network.createUser("Spike");
     network.postMessage("Spike", "Hello world");
     network.getMessages("Spike");
-    Assert.assertEquals("Hello world\n", systemOutRule.getLog());
+    Assert.assertEquals("Hello world posted by Spike\n", systemOutRule.getLog());
   }
 
   @Test
   public void selectUsersPosts() {
+    network.createUser("Spike");
     network.createUser("Nikesh");
     network.postMessage("Nikesh", "Goodbye cruel world");
     network.postMessage("Spike", "Hello world");
     network.getMessages("Nikesh");
-    Assert.assertEquals("Goodbye cruel world\n", systemOutRule.getLog());
+    Assert.assertEquals("Goodbye cruel world posted by Nikesh\n", systemOutRule.getLog());
   }
 
   @Test
   public void subscribeUsertoAnotherUser() {
+    network.createUser("Spike");
     network.createUser("Nikesh");
     network.createUser("Leo");
     network.subscribeUser("Leo", "Spike");
@@ -48,6 +51,7 @@ public class JavaNetworkTest {
 
   @Test
   public void viewTimelineOfSubscribedUserPosts() {
+    network.createUser("Spike");
     network.createUser("Nikesh");
     network.createUser("Leo");
     network.subscribeUser("Leo", "Spike");
@@ -55,6 +59,6 @@ public class JavaNetworkTest {
     network.postMessage("Nikesh", "Goodbye cruel world");
     network.postMessage("Spike", "What a wonderful world");
     network.viewTimeline("Leo");
-    Assert.assertEquals("What a wonderful world\nGoodbye cruel world\n", systemOutRule.getLog());
+    Assert.assertEquals("What a wonderful world posted by Spike\nGoodbye cruel world posted by Nikesh\n", systemOutRule.getLog());
   }
 }

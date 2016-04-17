@@ -8,7 +8,7 @@ public class UserTest {
          name2 = "Nikesh",
          message1 = "Hello world!",
          message2 = "Goodbye cruel world!",
-         returnMessage = "Hello world!\nGoodbye cruel world!\n";
+         returnMessage = "Hello world! posted by Spike\nGoodbye cruel world! posted by Spike\n";
 
   User spike = new User(name1),
        nikesh = new User(name2);
@@ -31,7 +31,7 @@ public class UserTest {
   public void viewPostedMessage() {
     spike.post(message1);
     spike.showMyTimeline();
-    Assert.assertEquals("Hello world!\n", systemOutRule.getLog());
+    Assert.assertEquals("Hello world! posted by Spike\n", systemOutRule.getLog());
   }
 
   @Test
