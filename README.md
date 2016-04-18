@@ -62,6 +62,19 @@ To use in a Java REPL, add the User and JavaNetwork classes, then:
 "Hello universe! posted by Spike"
 "Goodbye world! posted by Nikesh"
 ```
+### Next Steps & Improvements
+
+  * Extract functionality to separate classes, i.e. Timeline, Message & Print classes to separate concerns and to remove dependency on JavaNetwork class.
+  * Use Mockito to ensure isolated tests.
+  * Adapt the program to work on the command line through commands.
+  * Download intelliJ IDEA!
+
+### Reflections & Learnings
+
+  * It was my first experience with Java and it showed I can use the skills I learnt to pick up programming languages quickly.
+  * Kind of fun doing it 'manually' without IDE, although I can certainly see the limitations!
+  * Next time I should spend more time creating a domain model and be stricter with extracting grouped behavior to a separate class.
+
 #### Additional requirements
   * [JUnit](http://junit.org/junit4/)
   * [System Rules](http://stefanbirkner.github.io/system-rules/index.html)
